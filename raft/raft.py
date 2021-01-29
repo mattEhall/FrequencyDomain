@@ -1625,29 +1625,27 @@ class Model():
         print('C55:                 ',np.round(fowt.C_hydro[4,4],2),' Nm/rad')
         print('F_lines: ',list(np.round(np.array(self.F_moor0),2)),' N')
         print('C_lines: ',self.C_moor0)
-
         
-        # >>>>> TODO: also save the above (fantastic) list of results into a dict <<<<
-        
-        self.results['properties']['tower mass'] = fowt.mtower  
-        # etc.                                                                                      
-
-        ''' 
         print('A11/A22:             ',fowt.A_hydro_morison[0,0],' kg')
-        print(fowt.A_hydro_morison[2,2])
-        print(fowt.A_hydro_morison[3,3])
-        print(fowt.A_hydro_morison[0,4])
-        print(fowt.A_hydro_morison[1,3])
-        
-        
+        print('A33    :             ',fowt.A_hydro_morison[2,2],' kg')
+        print('A44/A55:             ',fowt.A_hydro_morison[3,3],' kg-m^2')
+        print('A15/A51:             ',fowt.A_hydro_morison[0,4],' kg-m')
+        print('A24/A42:             ',fowt.A_hydro_morison[1,3],' kg-m')
+        '''
         mag = abs(fowt.F_hydro_iner/fowt.zeta)
-        
         plt.plot(fowt.w, mag[0,:])
         plt.plot(fowt.w, mag[2,:])
         plt.plot(fowt.w, mag[4,:])
         plt.xlabel('Frequency (rad/s)')
         plt.ylabel('Exciting Force [N')
         '''
+        
+        # >>>>> TODO: also save the above (fantastic) list of results into a dict <<<<
+        
+        self.results['properties']['tower mass'] = fowt.mtower  
+        # etc.                                                                                      
+
+        
         def pdiff(x,y):
             return (abs(x-y)/y)*100
         
